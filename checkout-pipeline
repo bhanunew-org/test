@@ -1,0 +1,12 @@
+def checkout() {
+    dir (BUILD_ID) {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
+	}
+}
+
+node {
+       stage('checkout from github') {
+	checkout()
+}
+
+}
