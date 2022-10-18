@@ -1,0 +1,30 @@
+def checkout() {
+        dir (BUILD_ID) {
+                checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: '0f87b5a3-2587-42ba-bb81-ef399dedb68f', url: 'https://github.com/test-jenkins-pipe/pipe-test.git']]])
+                    }
+                }
+
+node {
+       stage('Checkout from GitHub') {
+       checkout()
+                }
+        try {
+                        stage ('Robot Execution'){
+                        sh "cd ${BUILD_ID} && ${Test_Case}"
+                        }
+        }
+        catch(e) {
+                currentBuild.result = 'UNSTABLE'
+        }
+        stage ('Zip the Report') {
+        sh "cd ${BUILD_ID} && zip -r report.zip report.html log.html output.xml"
+        }
+
+        stage ('Mail Notification') {
+        emailext
+        attachmentsPattern: '\'$BUILD_ID/report.zip\'', body: '''"""Hi team, ${JOB_NAME} build is completed successfully with build number ${BUILD_NUMBER}
+thanks"""
+''', replyTo: 'no-reply@test.com', subject: 'test pipe line in jenkins', to: 'vikasbhanuk@gmail.com'
+        }
+}
+
