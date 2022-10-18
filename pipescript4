@@ -1,0 +1,22 @@
+def checkout() {
+    dir (BUILD_ID) {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
+	}
+}
+
+node {
+       stage('checkout from github') {
+	checkout()
+}
+       stage('making a test file') {
+	sh "cd ${BUILD_ID} && touch test1.txt"
+}
+	stage('making a test2.txt2.txt file and zip files'){
+	 sh "cd ${BUILD_ID} && "touch test2.txt" && "zip -r demo.zip test1.txt test2.txt"
+}
+	stage('sending mail to team'){
+	 emailext attachLog: true, attachmentsPattern: '$BUILD_ID/demo.zip', body: 'Hi team, ${JOB_NAME} build is completed with build number ${BUILD_NUMBER}', subject: 'successfully making test file ', to: 'bhanunew9910@gmail.com'
+}
+
+}
+
