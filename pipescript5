@@ -8,8 +8,10 @@ node {
        stage('checkout from github') {
 	checkout()
 }
-	try ('File excuction') {
+	try {
+	      stege('File excuction') {
 	sh "cd ${BUILD_ID} && ${Test_Case}"
+}
 }
 	catch(e){
 	currentBuild.result='WARM'
