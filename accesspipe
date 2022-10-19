@@ -10,7 +10,7 @@ node {
 		checkout()
 }
 	stage ('making a file && accessing ubuntu'){
-	sh "ssh bhanu@192.168.56.110 && touch file1.txt"
+	sh "ssh bhanu@192.168.56.110 /bin/bash && touch file1.txt"
 }
 
 
