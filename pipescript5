@@ -9,7 +9,7 @@ node {
 	checkout()
 }
 	try {
-	      stege('File excuction') {
+	      stage('File excuction') {
 	sh "cd ${BUILD_ID} && ${Test_Case}"
 }
 }
