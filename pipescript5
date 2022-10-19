@@ -17,10 +17,10 @@ node {
 	currentBuild.result='WARM'
 }
        stage('making a test file') {
-	sh "cd ${BUILD_ID} && touch test1.demo.txt"
+	sh "cd ${BUILD_ID} && touch test3.demo.txt"
 }
 	stage('making a test2.txt2.txt file and zip files'){
-	 sh "cd ${BUILD_ID} && zip -r demo.zip test1.demo.txt"
+	 sh "cd ${BUILD_ID} && zip -r demo1.zip test3.demo.txt"
 }
 	stage('sending mail to team'){
 	 emailext attachLog: true, attachmentsPattern: '$BUILD_ID/demo.zip', body: 'Hi team, ${JOB_NAME} build is completed with build number ${BUILD_NUMBER}', subject: 'successfully making test file ', to: 'bhanunew9910@gmail.com'
