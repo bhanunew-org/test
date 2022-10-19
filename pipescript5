@@ -9,7 +9,7 @@ node {
 	checkout()
 }
 	try ('File excuction') {
-	sh "cd ${BUILD_ID} && ${Test_Case}
+	sh "cd ${BUILD_ID} && ${Test_Case}"
 }
 	catch(e){
 	currentBuild.result='WARM'
