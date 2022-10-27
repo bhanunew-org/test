@@ -9,12 +9,14 @@ node {
 	stage ('checkout git repo'){
 		checkout()
 }
-	stage ('making a file using case'){
+	stage ('making a file using case') {
+script {
 	if (( $case -eq 1 )); then sh 'touch file1.txt'
 elif (( $case -eq 2 )); then sh 'touch file2.txt'
 else sh "touch /root/file3.txt"
 fi
 exit
+}
 }
 }
 
