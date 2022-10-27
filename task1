@@ -10,9 +10,9 @@ node {
 		checkout()
 }
 	stage ('making a file using case') {
-	if ( $case == "1" ) {
+	if ( $request == "1" ) {
 	then sh 'touch file1.txt'
-	} else if ( $case == "2" ) {
+	} else if ( $request == "2" ) {
 	sh 'touch file2.txt'
 	}
 else sh "touch /root/file3.txt"
