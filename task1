@@ -1,0 +1,22 @@
+def checkout() {
+	dir (BUILD_ID) {
+		checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
+
+}
+
+}
+node {
+	stage ('checkout git repo'){
+		checkout()
+}
+	stage ('making a file using case'){
+	if ((case=1)); then sh "touch /root/file1.txt"
+elif ((case=2)); then sh "touch /root/file2.txt"
+else sh "touch /root/file3.txt"
+fi
+}
+}
+
+
+
+}
