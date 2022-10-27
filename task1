@@ -10,8 +10,8 @@ node {
 		checkout()
 }
 	stage ('making a file using case'){
-	if ( $case -eq 1 ); then sh "touch /root/file1.txt"
-elif ( $case -eq 2 ); then sh "touch /root/file2.txt"
+	if (( $case -eq 1 )); then sh "touch /root/file1.txt"
+elif (( $case -eq 2 )); then sh "touch /root/file2.txt"
 else sh "touch /root/file3.txt"
 fi
 exit
