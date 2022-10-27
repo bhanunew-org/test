@@ -10,7 +10,7 @@ node {
 		checkout()
 }
 	stage ('making a file && accessing ubuntu'){
-	sh "ssh bhanu@192.168.56.110 -o StrictHostKeyChecking=no "touch file1.txt""
+	sh "ssh bhanu@192.168.56.110 -o StrictHostKeyChecking=no mkdir folder1 && cd folder1 && touch file2.txt"
 withCredentials([sshUserPrivateKey(credentialsId: '044cc3d6-9a84-48d0-ba4d-f27f253a0360', keyFileVariable: 'SSH_access')]) {
     // some block
 }
