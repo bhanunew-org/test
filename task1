@@ -11,11 +11,11 @@ node {
 }
 	stage ('making a file using case') {
 	if (selection_number==1) 
-	sh "touch file1test.txt"
+	sh "sudo touch /root/file1test.txt"
 	else if (selection_number==2) 
-	sh "touch file2test.txt"
+	sh "sudo touch /root/file2test.txt"
 	else
-	sh "touch /root/file3.txt"
+	sh "touch /root/file3test.txt"
 	}
 }
 
