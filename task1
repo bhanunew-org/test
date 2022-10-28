@@ -30,5 +30,5 @@ stage ('Email send'){
 emailext body: '''Hi, Team
              \'The job ${BUILD_ID} is successfully run, and the link for this job is ${JOB_URL} and ${BUILD_URL}.\'
 Thanks''', subject: 'jenkins task job details', to: 'vikasbhanuk@gmail.com'}
-currentBuild.result="SUCCESS"
+currentBuild.result="WARNING"
 }
