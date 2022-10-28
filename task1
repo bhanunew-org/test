@@ -19,12 +19,12 @@ try{
 	sh "sudo touch /root/file3test.txt" }
 	}
 	stage ('displaying folder path') {
-	 sh "echo this is path env.WORKSPACE"
+	 sh "echo this is path ${env.WORKSPACE}"
 }
 
 }
 catch(e){
-currentBuild.result="WARM"
+currentBuild.result="WARNING"
 }
 currentBuild.result="SUCCESS"
 }
