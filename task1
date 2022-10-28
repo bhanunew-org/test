@@ -19,7 +19,7 @@ try{
 	sh "sudo touch /root/file3test.txt" }
 	}
 	stage ('displaying folder path') {
-	 sh "this is directory path ${env.WORKSPACE}"
+	 sh "echo this is directory path ${env.WORKSPACE}"
 }
 
 }
