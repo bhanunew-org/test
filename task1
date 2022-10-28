@@ -20,6 +20,7 @@ try{
 	}
 }
 catch(e){
-currentBuild.result='WARM'
+currentBuild.result="WARM"
 }
+currentBuild.result="SUCCESS"
 }
