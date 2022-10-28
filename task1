@@ -9,6 +9,7 @@ node {
 	stage ('checkout git repo'){
 		checkout()
 }
+try{
 	stage ('making a file using case') {
 	if (evn.selection_number == "1") { 
 	sh "sudo touch /root/file1test.txt" }
@@ -18,4 +19,7 @@ node {
 	sh "sudo touch /root/file3test.txt" }
 	}
 }
-
+catch(e){
+currentBuild.result='WARM'
+}
+}
