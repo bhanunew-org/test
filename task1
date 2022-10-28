@@ -10,12 +10,12 @@ node {
 		checkout()
 }
 	stage ('making a file using case') {
-	if (selection_number==1) 
-	sh "sudo touch /root/file1test.txt"
-	else if (selection_number==2) 
-	sh "sudo touch /root/file2test.txt"
-	else
-	sh "sudo touch /root/file3test.txt"
+	if ("${selection_number}" == "1") { 
+	sh "sudo touch /root/file1test.txt" }
+	else if ("${selection_number}" == "2") { 
+	sh "sudo touch /root/file2test.txt"}
+	else {
+	sh "sudo touch /root/file3test.txt" }
 	}
 }
 
