@@ -15,7 +15,7 @@ node {
 	else if (selection_number==2) 
 	sh "sudo touch /root/file2test.txt"
 	else
-	sh "touch /root/file3test.txt"
+	sh "sudo touch /root/file3test.txt"
 	}
 }
 
