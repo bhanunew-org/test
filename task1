@@ -11,9 +11,9 @@ node {
 }
 	stage ('making a file using case') {
 	if (selection_number==1) 
-	sh "touch /root/file1.txt"
+	sh "touch file1test.txt"
 	else if (selection_number==2) 
-	sh "touch /root/file2.txt"
+	sh "touch file2test.txt"
 	else
 	sh "touch /root/file3.txt"
 	}
