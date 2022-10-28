@@ -18,6 +18,9 @@ try{
 	else {
 	sh "sudo touch /root/file3test.txt" }
 	}
+	stage ('displaying folder path') {
+	 sh "echo this is path env.WORKSPACE"
+}
 
 }
 catch(e){
