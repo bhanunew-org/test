@@ -19,10 +19,6 @@ try{
 	sh "sudo touch /root/file3test.txt" }
 	}
 
-public enum BallColor implements StatusIcon {
-RED("red", Messages._BallColor_Failed(), ColorPalette.RED),
-YELLOW("yellow", Messages._BallColor_Unstable(), ColorPalette.YELLOW),
-BLUE_ANIME("blue_anime", Messages._BallColor_InProgress(), ColorPalette.BLUE)}
 }
 catch(e){
 currentBuild.result="WARM"
