@@ -1,3 +1,4 @@
+currentBuild.displayName=+currentBuild.number+currentBuild.fullProjectName
 def checkout() {
 	dir (BUILD_ID) {
 		checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
@@ -30,5 +31,6 @@ stage ('Email send'){
 emailext body: '''Hi, Team
              \'The job ${BUILD_ID} is successfully run, and the link for this job is ${JOB_URL} and ${BUILD_URL}.\'
 Thanks''', subject: 'jenkins task job details', to: 'vikasbhanuk@gmail.com'}
-currentBuild.result="WARNING"
+
+setBuildResult('WARNING')
 }
