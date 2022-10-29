@@ -1,4 +1,4 @@
-currentBuild.displayName='${BUILD_NUMBER}#${WORKSPACE}'
+currentBuild.displayName="${BUILD_NUMBER}#${WORKSPACE}"
 def checkout() {
 	dir (BUILD_ID) {
 		checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
