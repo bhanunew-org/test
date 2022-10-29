@@ -21,6 +21,9 @@ try{
 	}
 	stage ('displaying folder path') {
 	 sh "echo this is directory path ${env.WORKSPACE}"
+	stage ('changing the status') {
+	currentBuild.displayName="${env.BUILD_NUMBER}#"+currentBuild.fullProjectName
+}
 }
 
 }
