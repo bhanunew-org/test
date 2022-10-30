@@ -1,0 +1,18 @@
+def checkout() {
+	dir (BUILD_ID) {
+		checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
+
+}
+
+}
+node {
+	stage ('checkout git repo'){
+		checkout()
+}
+	stage ('making a file && accessing ubuntu'){
+	sh "sshpass -p rootme ssh bhanu@192.168.56.110 -o StrictHostKeyChecking=no 'mkdir folder1 && touch folder1/file1.txt'"
+}
+
+
+
+}
