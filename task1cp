@@ -1,0 +1,37 @@
+def checkout() {
+	dir (BUILD_ID) {
+		checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
+
+}
+
+}
+node {
+	stage ('checkout git repo'){
+		checkout()
+}
+try{
+	stage ('making a file using case') {
+	if (env.selection_number == "1") { 
+	sh "sudo touch /root/file1test.txt" }
+	else if (env.selection_number == "2") { 
+	sh "sudo touch /root/file2test.txt"}
+	else {
+	sh "sudo touch /root/file3test.txt" }
+	}
+	stage ('displaying folder path') {
+	 sh "echo this is directory path ${env.WORKSPACE}"
+	stage ('changing the status') {
+	currentBuild.displayName="${env.BUILD_NUMBER}#${env.BRANCH_NAME}"
+}
+}
+
+}
+catch(e){
+currentBuild.result="WARNING"
+}
+stage ('Email send'){
+emailext body: '''Hi, Team
+             \'The job ${BUILD_ID} is successfully run, and the link for this job is ${JOB_URL} and ${BUILD_URL}.\'
+Thanks''', subject: 'jenkins task job details', to: 'vikasbhanuk@gmail.com'}
+
+}
