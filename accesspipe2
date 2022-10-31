@@ -9,8 +9,11 @@ node {
 	stage ('checkout git repo'){
 		checkout()
 }
-	stage ('making a file && accessing ubuntu'){
+	sshagent(['10b4d902-add2-4557-8c4f-a6fa400f2a2c']) {
+    // some block
+
 	sh "ssh -o stricthostkeychecking=no root@192.168.56.106 'mkdir folder2 && touch folder2/file1.txt'"
+
 }
 
 
