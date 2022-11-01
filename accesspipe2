@@ -13,7 +13,7 @@ node {
 sshagent(['6d50e939-d997-4377-8eb6-526094892177']) {
     // some block
 
-	sh "ssh -o StrictHostKeyChecking=no root@192.168.56.106 mkdir /root/folder4 && echo "hello" > /root/folder4/file1.txt" 
+	sh "ssh -o StrictHostKeyChecking=no root@192.168.56.106 'mkdir /root/folder4 && touch /root/folder4/file1.txt'" 
 
 }
 
