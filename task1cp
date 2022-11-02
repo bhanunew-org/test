@@ -25,7 +25,7 @@ try{
 
 
 	stage ('changing the status') {
-	currentBuild.displayName=${env.BRANCH_NAME}
+	currentBuild.displayName=env.BRANCH_NAME
 }
 }
 
