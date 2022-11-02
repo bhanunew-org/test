@@ -21,11 +21,11 @@ try{
 
 
 	stage ('displaying folder path') {
-	 sh "echo this is directory path ${env.WORKSPACE}"}
+	 sh "echo this is directory path ${env.GIT_BRANCH}"}
 
 
 	stage ('changing the status') {
-	currentBuild.displayName=env.GIT_BRANCH
+	currentBuild.displayName=env.WORKSPACE
 }
 }
 
