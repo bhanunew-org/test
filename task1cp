@@ -9,7 +9,7 @@ node {
 	stage ('checkout git repo'){
 		checkout()
 }
-try{
+#try{
 #	stage ('making a file using case') {
 #	if (env.selection_number == "1"){ 
 #	sh "sudo touch /root/file1test.txt" }
@@ -20,14 +20,17 @@ try{
 #	}
 #	stage ('displaying folder path') {
 #	 sh "echo this is directory path ${env.WORKSPACE}"
-	stage ('changing the status') {
-	currentBuild.displayName="${env.BRANCH_NAME}"
-}
-}
+#	stage ('changing the status') {
+#	currentBuild.displayName="${env.BRANCH_NAME}"
+#}
+#}
 
+#}
+#catch(e){
+#currentBuild.result="WARNING"
+def getGitBranchNamw(){
+return scm.branches[0].name
 }
-catch(e){
-currentBuild.result="WARNING"
 }
 #stage ('Email send'){
 #emailext body: '''Hi, Team
