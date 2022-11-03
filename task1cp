@@ -34,11 +34,9 @@ try{
 	 sh "echo Name of the agent if the build is on an agent ${env.NODE_NAME}"
 	 sh "echo build number currentBuild.number"} 
 stage('Set branch name') {
-            steps {
                 script{
                     currentBuild.displayName = "#"+ currentBuild.number + ": "+ CURRENT_BRANCH_NAME
                 }
-            }
         }
 //
 //	stage ('changing the status') {
