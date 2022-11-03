@@ -9,6 +9,9 @@ node {
 	stage ('checkout git repo'){
 		checkout()
 }
+environment {
+        CURRENT_BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
+    }
 try{
 	stage ('making a file using case') {
 	if (env.selection_number == "1"){ 
@@ -21,11 +24,26 @@ try{
 
 
 	stage ('displaying folder path') {
-	 sh "echo this is directory path ${env.GIT_BRANCH}"}
-
-
-	stage ('changing the status') {
-	currentBuild.displayName=+env.WORKSPACE_TMP+ env.JENKINS_HOME
+	 sh "echo this is git branch name ${env.GIT_BRANCH}"
+	 sh "echo this is build number ${env.BUILD_NUMBER}"
+	 sh "echo URL that will redirect to a Job in a preferred user interface ${env.JOB_DISPLAY_URL}"
+	 sh "echo 
+Short Name of the project of this build stripping off folder paths, such as "foo" for "bar/foo" ${env.JOB_BASE_NAME}"
+	 sh "echo Name of the project of this build, such as "foo" or "foo/bar" ${env.JOB_NAME}"
+	 sh "echo this will be set to the name of the branch being built ${env.BRANCH_NAME}"
+	 sh "echo this will be set to a timestamp in the format ${env.TAG_DATE}"
+	 sh "echo Name of the agent if the build is on an agent ${env.NODE_NAME}"
+	 sh "echo build number (integer) currentBuild.number" 
+stage('Set branch name') {
+            steps {
+                script{
+                    currentBuild.displayName = "#"+currentBuild.number+": "+CURRENT_BRANCH_NAME
+                }
+            }
+        }
+//
+//	stage ('changing the status') {
+//	currentBuild.displayName=+env.WORKSPACE_TMP+ env.JENKINS_HOME
 
 }
 }
