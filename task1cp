@@ -12,7 +12,7 @@ node {
 environment {
         CURRENT_BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
     }
-try{
+
 	stage ('making a file using case') {
 	if (env.selection_number == "1"){ 
 	sh "sudo touch /root/file1test.txt" }
@@ -43,13 +43,13 @@ stage('Set branch name') {
 //	currentBuild.displayName=+env.WORKSPACE_TMP+ env.JENKINS_HOME
 
 // }
-}
 
 
-catch(e){
-currentBuild.result="WARNING"
 
-}
+
+
+
+
 
 stage ('Email send'){
 emailext body: '''Hi, Team
