@@ -44,7 +44,7 @@ stage('Set branch name') {
 //	stage ('changing the status') {
 //	currentBuild.displayName=+env.WORKSPACE_TMP+ env.JENKINS_HOME
 
-}
+// }
 }
 
 
