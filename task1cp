@@ -25,9 +25,8 @@ try{
 
 
 	stage ('changing the status') {
-//	currentBuild.displayName=env.WORKSPACE
+	currentBuild.displayName=env.WORKSPACE_TMP
 
-currentBuild.displayName = "${BUILD_NUMBER}, branch ${BRANCH}"
 }
 }
 
