@@ -35,7 +35,7 @@ try{
 	 sh "echo build number currentBuild.number"} 
 stage('Set branch name') {
                 script{
-                    currentBuild.displayName = "#"+ currentBuild.number + ": "+ CURRENT_BRANCH_NAME
+                    currentBuild.displayName = + currentBuild.number +  CURRENT_BRANCH_NAME
                 }
         }
 //
