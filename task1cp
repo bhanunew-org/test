@@ -27,8 +27,7 @@ try{
 	 sh "echo this is git branch name ${env.GIT_BRANCH}"
 	 sh "echo this is build number ${env.BUILD_NUMBER}"
 	 sh "echo URL that will redirect to a Job in a preferred user interface ${env.JOB_DISPLAY_URL}"
-	 sh "echo 
-Short Name of the project of this build stripping off folder paths, such as "foo" for "bar/foo" ${env.JOB_BASE_NAME}"
+	 sh "echo Short Name of the project of this build stripping off folder paths, such as "foo" for "bar/foo" ${env.JOB_BASE_NAME}"
 	 sh "echo Name of the project of this build, such as "foo" or "foo/bar" ${env.JOB_NAME}"
 	 sh "echo this will be set to the name of the branch being built ${env.BRANCH_NAME}"
 	 sh "echo this will be set to a timestamp in the format ${env.TAG_DATE}"
