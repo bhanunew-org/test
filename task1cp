@@ -25,7 +25,7 @@ try{
 
 
 	stage ('changing the status') {
-	currentBuild.displayName=env.WORKSPACE_TMP
+	currentBuild.displayName=env.WORKSPACE_TMP, env.GIT_BRANCH
 
 }
 }
