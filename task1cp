@@ -41,7 +41,7 @@ node {
 	 sh "echo this will be set to the name of the branch being built ${env.BRANCH_NAME}"
 	 sh "echo this will be set to a timestamp in the format ${env.TAG_DATE}"
 	 sh "echo Name of the agent if the build is on an agent ${env.NODE_NAME}"
-	 sh "echo build number currentBuild.number"} 
+	 sh "echo build number ${currentBuild.number}"} 
 stage('Set branch name') {
                     currentBuild.displayName ="${currentBuild.number}"
                 
