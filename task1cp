@@ -9,9 +9,9 @@ node {
 	stage ('checkout git repo'){
 		checkout()
 }
-environment {
-        CURRENT_BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
-    }
+
+
+
 
 	stage ('making a file using case') {
 	if (env.selection_number == "1"){ 
@@ -35,7 +35,7 @@ environment {
 	 sh "echo build number currentBuild.number"} 
 stage('Set branch name') {
                 script{
-                    currentBuild.displayName = + currentBuild.number +  CURRENT_BRANCH_NAME
+                    currentBuild.displayName = + currentBuild.number +
                 }
         }
 //
