@@ -21,16 +21,16 @@ node {
 	else {
 	sh "sudo touch /root/file3test.txt" }
 	}
-stage ('getting branch name'){
-def BRANCH_NAME = getCurrentBranch()
-echo 'Current branch is' + BRANCH_NAME
-def getCurrentBranch () {
-    return sh (
-    script: 'git name-rev --name-only HEAD',
-    returnStdout: true
-    ).trim()
-}
-}
+
+
+
+
+
+
+
+
+
+
 
 	stage ('displaying folder path') {
 	 sh "echo this is git branch name ${env.GIT_BRANCH}"
