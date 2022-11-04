@@ -43,7 +43,7 @@ node {
 	 sh "echo Name of the agent if the build is on an agent ${env.NODE_NAME}"
 	 sh "echo build number ${currentBuild.number}"} 
 stage('Set branch name') {
-                    currentBuild.displayName ="${currentBuild.number} ${currentBuild.displayName}"
+                    currentBuild.displayName ="${currentBuild.number} ${env.GIT_BRANCH_NAME}"
                 
         }
 //
