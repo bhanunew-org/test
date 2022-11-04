@@ -35,7 +35,7 @@ node {
 	 sh "echo build number currentBuild.number"} 
 stage('Set branch name') {
                 script{
-                    currentBuild.displayName = + currentBuild.number +
+                    currentBuild.displayName =${ currentBuild.number}
                 }
         }
 //
@@ -51,9 +51,9 @@ stage('Set branch name') {
 
 
 
-stage ('Email send'){
-emailext body: '''Hi, Team
-             \'The job ${BUILD_ID} is successfully run, and the link for this job is ${JOB_URL} and ${BUILD_URL}.\'
-Thanks''', subject: 'jenkins task job details', to: 'vikasbhanuk@gmail.com'}
+//stage ('Email send'){
+//emailext body: '''Hi, Team
+//             \'The job ${BUILD_ID} is successfully run, and the link for this job is ${JOB_URL} and ${BUILD_URL}.\'
+//Thanks''', subject: 'jenkins task job details', to: 'vikasbhanuk@gmail.com'}
 }
 
