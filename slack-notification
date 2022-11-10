@@ -1,0 +1,14 @@
+def checkout() {
+	dir (BUILD_ID) {
+		checkout([$class: 'GitSCM', branches: [[name: '*/moba']], extensions: [], userRemoteConfigs: [[credentialsId: 'c90309e1-04e5-4514-b929-7742883dc019', url: 'https://github.com/bhanunew-org/test.git']]])
+}
+}
+node {
+	stage ('checkout git repo'){
+		checkout()
+}
+stage ('chacking hostname'){
+sh 'hostname'
+}
+slackSend channel: 'bhanu-tec', message: 'the job is successfully build with build number ${BUILD_NUMBER} and build id is ${BUILD_ID} and job url is ${JOB_URL}'
+}
