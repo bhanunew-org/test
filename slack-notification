@@ -11,4 +11,5 @@ stage ('chacking hostname'){
 sh 'hostname'
 }
 //slackSend channel: 'bhanu-tec', message: 'the job is successfully build with build number ${BUILD_NUMBER} and build id is ${BUILD_ID} and job url is ${JOB_URL}'
-slackSend channel: "#bhanu-tec",baseUrl: "bhanu-tec.slack.com" message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"}
+slackSend channel: "#bhanu-tec", baseUrl: "bhanu-tec.slack.com", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+}
