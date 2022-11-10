@@ -11,7 +11,7 @@ stage ('chacking hostname'){
 sh 'hostname'
 }
 stage ('messege'){
-slackSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER}"
 }
 }
 
