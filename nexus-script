@@ -18,8 +18,6 @@ pipeline {
         stage("Publish to Nexus Repository Manager") {
 	    steps {
 		script {
-if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
@@ -39,9 +37,6 @@ if(artifactExists) {
                                 type: "pom"]
                             ]
                         );
-                    } else {
-                        error "*** File: ${artifactPath}, could not be found";
-                    }
        }
 }
  }
