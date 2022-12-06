@@ -19,8 +19,8 @@ pipeline {
 				    [
 						artifactId: 'my-app', 
 						classifier: '', 
-						file: 'target/myapp.war', 
-						type: 'war'
+						file: 'target/my-app-1.0-SNAPSHOT.jar', 
+						type: 'jar'
 				  ]
 				], 
 				credentialsId: 'NEXUS_CRD', 
