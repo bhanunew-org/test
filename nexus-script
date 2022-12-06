@@ -10,7 +10,7 @@ pipeline {
         }
         stage("Maven Build") {
             steps {
-                    sh "mvn package -DskipTests=true"
+                    sh "mvn clean package"
             }
         }
 		stage("upload file on nexus"){
@@ -19,8 +19,8 @@ pipeline {
 				    [
 						artifactId: 'sonarscanner-maven-basic', 
 						classifier: '', 
-						file: 'target/sonarscanner-maven-basic.war', 
-						type: 'war'
+						file: 'target/sonarscanner-maven-basic.jar', 
+						type: 'jar'
 				  ]
 				], 
 				credentialsId: 'NEXUS_CRD', 
