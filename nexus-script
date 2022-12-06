@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+	agent any
     stages {
         stage("Clone code from GitHub") {
             steps {
@@ -10,36 +10,28 @@ pipeline {
         }
         stage("Maven Build") {
             steps {
-                script {
                     sh "mvn package -DskipTests=true"
-                }
             }
         }
-        stage("Publish to Nexus Repository Manager") {
-	    steps {
-		script {
-                        nexusArtifactUploader(
-                            nexusVersion: 'nexus3',
-                            protocol: 'http',
-                            nexusUrl: '192.168.56.108:8081',
-                            groupId: 'pom.org.sonarqube',
-                            version: 'pom.1.0-SNAPSHOT',
-                            repository: 'jenkins-integration',
-                            credentialsId: 'NEXUS_CRD',
-                            artifacts: [
-                                [artifactId: 'pom.sonarscanner-maven-basic',
-                                classifier: '',
-                                file: artifactPath,
-                                type: pom.packaging],
-                                [artifactId: 'pom.sonarscanner-maven-basic',
-                                classifier: '',
-                                file: "pom.xml",
-                                type: "pom"]
-                            ]
-                        );
-       }
-}
- }
-	
+		stage("upload file on nexus"){
+			steps {
+				nexusArtifactUploader artifacts: [
+				    [
+						artifactId: 'sonarscanner-maven-basic', 
+						classifier: '', 
+						file: 'target/sonarscanner-maven-basic.war', 
+						type: 'war'
+				  ]
+				], 
+				credentialsId: 'NEXUS_CRD', 
+				groupId: 'org.sonarqube', 
+				nexusUrl: '192.168.56.108:8081', 
+				nexusVersion: 'nexus3', 
+				protocol: 'http', 
+				repository: 'jenkins-integration', 
+				version: '1.0-SNAPSHOT'
+			}
+		}
+         
     }
 }
