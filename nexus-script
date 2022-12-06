@@ -17,14 +17,14 @@ pipeline {
 			steps {
 				nexusArtifactUploader artifacts: [
 				    [
-						artifactId: 'sonarscanner-maven-basic', 
+						artifactId: 'my-app', 
 						classifier: '', 
-						file: 'target/sonarscanner-maven-basic.jar', 
-						type: 'jar'
+						file: 'target/myapp.war', 
+						type: 'war'
 				  ]
 				], 
 				credentialsId: 'NEXUS_CRD', 
-				groupId: 'org.sonarqube', 
+				groupId: 'com.mycompany.app', 
 				nexusUrl: '192.168.56.108:8081', 
 				nexusVersion: 'nexus3', 
 				protocol: 'http', 
